@@ -18,6 +18,15 @@ int main()
     //Crear un contexto para openGL
     glfwMakeContextCurrent(window);
 
+    //Agregando el color
+    gladLoadGL();
+    //Cordenada inicio x,y -> final X,Y
+    glViewport(0, 0, 800, 800);
+    glClearColor(0.3f,0.6f,0.9f,1);
+    glClear(GL_COLOR_BUFFER_BIT);
+    glfwSwapBuffers(window);
+
+
     //Mantener la viva la ventana hasta que se cierre
     while (!glfwWindowShouldClose(window))
     {
