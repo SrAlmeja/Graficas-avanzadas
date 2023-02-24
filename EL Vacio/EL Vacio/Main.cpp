@@ -25,18 +25,25 @@ int main()
         "out vec4 FragColor;\n"
         "void main()\n"
         "{\n"
-        "    FragColor = vec4(0.8f, 0.3f, 0.02f, 1.0f);\n"
+        "    FragColor = vec4(1, 0, 1, 0.5);\n"
         "}\n\0";
 
     GLfloat vertices[] =
     {
-        -0.5f, -0.5f / float(sqrt(3)) / 3,0.0f,
-        0.5f, -0.5f * float(sqrt(3)) / 3,0.0f,
-        0.0f, 0.5f * float(sqrt(3)) * 2 / 3,0.0f
+         -0.5f, -0.5f * float(sqrt(3)) / 3, 0.0f,       // Esquina inferior izq
+         0.5f, -0.5f * float(sqrt(3)) / 3, 0.0f,        // Esquina inferior derecha
+         0.0f, 0.5f * float(sqrt(3)) * 2 / 3, 0.0f,   // Esquina superior
+         -0.5f / 2, 0.5f * float(sqrt(3)) / 6, 0.0f,      // Interior izquierda
+         0.5f / 2, 0.5f * float(sqrt(3)) / 6, 0.0f,    // Interior derecha
+         0.0f, -0.5f * float(sqrt(3)) / 3, 0.0f        // Interior abajo
     };
 
-    
- 
+    GLuint indices[] =
+    {
+     0, 3, 5, // Triangulo inferior izq
+     3, 2, 4, // Triangulo inferior der
+     5, 4, 1 //  Triangulo superior
+    };
     
     //Apuntador de tipo window para tener referencia de la ventana (Referencia)
     GLFWwindow* window = glfwCreateWindow(800, 800, "Window", NULL, NULL);
@@ -73,38 +80,39 @@ int main()
     glDeleteShader(fragmentShader);
 
 
-    GLuint VAO, VBO;
+    GLuint VAO, VBO, EBO;
 
     //Generamos identificadores únicos
     glGenVertexArrays(1, &VAO);
     glGenBuffers(1, &VBO);
+    glGenBuffers(1, &EBO);
 
     //Vinculamos el VAO/VBO con el contexto OpenGL
     glBindVertexArray(VAO);
-
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+
 
     //Configuta el Buffer con el tamaño el tipo de uso del buffer
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
 
     //Configura los atributos de los vértices en el objeto VAO
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
-
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 
     //Mantener la viva la ventana hasta que se cierre
     //Asignacion de buffer
     while (!glfwWindowShouldClose(window))
     {
-        glClearColor(0.07f, 0.13f, 0.17f, 1.0f);
+        glClearColor(0, 0, 0, 0);
         glClear(GL_COLOR_BUFFER_BIT);
         glUseProgram(shaderProgram);
         glBindVertexArray(VAO);
-        glDrawArrays(GL_TRIANGLES, 0, 3);
-        glDrawArrays(GL_TRIANGLES, 0, 3);
+        glDrawElements(GL_TRIANGLES, 9, GL_UNSIGNED_INT, 0);
         glfwSwapBuffers(window);
 
         glfwPollEvents();
@@ -113,6 +121,7 @@ int main()
     //Limpieza de Buffer
     glDeleteVertexArrays(1, &VAO);
     glDeleteBuffers(1, &VBO);
+    glDeleteBuffers(1, &EBO);
     glDeleteProgram(shaderProgram);
 
     
