@@ -38,13 +38,35 @@ int main()
          0.0f, -0.5f * float(sqrt(3)) / 3, 0.0f        // Interior abajo
     };
 
+    GLfloat insideVertex[] =
+    {
+         -0.45f, -0.45f * float(sqrt(3)) / 3, 0.0f,       // Esquina inferior izq
+         -0.5f / 2, 0.5f * float(sqrt(1.5f)) / 6, 0.0f,      // Interior izquierda
+         -0.05f, -0.45f * float(sqrt(3)) / 3, 0.0f,        // Interior abajo
 
+
+         0.05f, -0.45f * float(sqrt(3)) / 3, 0.0f,        // Interior abajo
+         0.45f, -0.45f * float(sqrt(3)) / 3, 0.0f,        // Esquina inferior derecha
+         0.5f / 2, 0.5f * float(sqrt(1.5f)) / 6, 0.0f,   // Esquina superior
+
+         -0.4f / 2, 0.6f * float(sqrt(3)) / 6, 0.0f,      // Interior izquierda
+         0.0f, 0.45f * float(sqrt(3)) * 2 / 3, 0.0f,   // Esquina superior
+         0.4f / 2, 0.6f * float(sqrt(3)) / 6, 0.0f,    // Interior derecha
+    };
 
     GLuint indices[] =
     {
      0, 3, 5, // Triangulo inferior izq
      3, 2, 4, // Triangulo inferior der
      5, 4, 1 //  Triangulo superior
+    };
+
+
+    GLuint insideIndex[] =
+    {
+    0, 1, 2, // Triangulo inferior izq
+    3, 4, 5, // Triangulo inferior der
+    6, 7, 8 // Triangulo superior
     };
 
     //Apuntador de tipo window para tener referencia de la ventana (Referencia)
@@ -55,6 +77,7 @@ int main()
 
     //Agregando el color
     gladLoadGL();
+
     //Cordenada inicio x,y -> final X,Y
     glViewport(0, 0, 800, 800);
     glClearColor(0.3f, 0.6f, 0.9f, 1);
