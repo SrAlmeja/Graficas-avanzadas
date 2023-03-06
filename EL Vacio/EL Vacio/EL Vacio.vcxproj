@@ -75,8 +75,8 @@
     <LibraryPath>C:\Users\Verde5\Documents\Repos\SR ALMEJA\Graficas-avanzadas\EL Vacio\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\Users\Verde5\Documents\Repos\SR ALMEJA\Graficas-avanzadas\EL Vacio\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\Verde5\Documents\Repos\SR ALMEJA\Graficas-avanzadas\EL Vacio\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>F:\Repositorios\Amerike\6to\Graficas-avanzadas\EL Vacio\include;$(IncludePath)</IncludePath>
+    <LibraryPath>F:\Repositorios\Amerike\6to\Graficas-avanzadas\EL Vacio\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -137,7 +137,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\..\..\Downloads\glad\src\glad.c" />
+    <ClCompile Include="..\..\glad.c" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
