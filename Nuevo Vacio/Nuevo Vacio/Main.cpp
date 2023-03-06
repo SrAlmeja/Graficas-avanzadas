@@ -88,7 +88,7 @@ int main()
     //Asignacion de buffer
     while (!glfwWindowShouldClose(window))
     {
-        glClearColor(0, 0, 0, 0);
+        glClearColor(1, 0.5f, 0, 0);
         glClear(GL_COLOR_BUFFER_BIT);
 
         shaderProgram.Activate();
