@@ -26,7 +26,7 @@ int main()
          0.0f, -0.5f * float(sqrt(3)) / 3, 0.0f,         0.9f, 0.3f , 0.02f// Interior abajo
     };
 
-    GLfloat insideVertex[] =
+    GLfloat insVertices[] =
     {
          -0.45f, -0.45f * float(sqrt(3)) / 3, 0.0f,       // Esquina inferior izq
          -0.5f / 2, 0.5f * float(sqrt(1.5f)) / 6, 0.0f,      // Interior izquierda

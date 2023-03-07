@@ -146,13 +146,19 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EBO.h" />
+    <ClInclude Include="InsEBO.h" />
     <ClInclude Include="ShaderClass.h" />
+    <ClInclude Include="InsShaderClassIns.h" />
+    <ClInclude Include="InsVAO.h" />
     <ClInclude Include="VBO.h" />
     <ClInclude Include="VAO.h" />
+    <ClInclude Include="InsVBO.H" />
   </ItemGroup>
   <ItemGroup>
     <None Include="default.frag" />
     <None Include="default.vert" />
+    <None Include="insDefault.frag" />
+    <None Include="insDefault.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

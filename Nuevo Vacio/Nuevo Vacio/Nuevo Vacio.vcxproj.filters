@@ -50,12 +50,30 @@
     <ClInclude Include="VBO.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
+    <ClInclude Include="InsEBO.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="InsShaderClassIns.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="InsVAO.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="InsVBO.H">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="default.frag">
       <Filter>Archivos de recursos\Shaders</Filter>
     </None>
     <None Include="default.vert">
+      <Filter>Archivos de recursos\Shaders</Filter>
+    </None>
+    <None Include="insDefault.vert">
+      <Filter>Archivos de recursos\Shaders</Filter>
+    </None>
+    <None Include="insDefault.frag">
       <Filter>Archivos de recursos\Shaders</Filter>
     </None>
   </ItemGroup>
