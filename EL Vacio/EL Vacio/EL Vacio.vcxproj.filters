@@ -13,11 +13,11 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Archivos de recursos\Shaders">
+      <UniqueIdentifier>{a50a587b-ee17-42f1-abc0-bd6bf010caf9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Main.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\glad.c">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
@@ -31,6 +31,9 @@
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="EBO.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
@@ -49,17 +52,17 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="insDefault.frag">
-      <Filter>Archivos de recursos</Filter>
+    <None Include="D1.vert">
+      <Filter>Archivos de recursos\Shaders</Filter>
     </None>
-    <None Include="insDefault.Vert">
-      <Filter>Archivos de recursos</Filter>
+    <None Include="D1.frag">
+      <Filter>Archivos de recursos\Shaders</Filter>
     </None>
-    <None Include="default.frag">
-      <Filter>Archivos de recursos</Filter>
+    <None Include="D2.vert">
+      <Filter>Archivos de recursos\Shaders</Filter>
     </None>
-    <None Include="default.vert">
-      <Filter>Archivos de recursos</Filter>
+    <None Include="D2.frag">
+      <Filter>Archivos de recursos\Shaders</Filter>
     </None>
   </ItemGroup>
 </Project>

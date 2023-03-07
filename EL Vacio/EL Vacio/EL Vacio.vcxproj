@@ -139,7 +139,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\glad.c" />
     <ClCompile Include="EBO.cpp" />
-    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="shaderClass.cpp" />
     <ClCompile Include="VAO.cpp" />
     <ClCompile Include="VBO.cpp" />
@@ -151,10 +151,10 @@
     <ClInclude Include="VBO.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="default.frag" />
-    <None Include="default.vert" />
-    <None Include="insDefault.frag" />
-    <None Include="insDefault.Vert" />
+    <None Include="D1.vert" />
+    <None Include="D1.frag" />
+    <None Include="D2.frag" />
+    <None Include="D2.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
