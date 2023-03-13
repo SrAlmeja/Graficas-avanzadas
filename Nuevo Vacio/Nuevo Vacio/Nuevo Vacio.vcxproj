@@ -71,12 +71,12 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>C:\Users\Verde5\Documents\Repos\SR ALMEJA\Graficas-avanzadas\Nuevo Vacio\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\Verde5\Documents\Repos\SR ALMEJA\Graficas-avanzadas\Nuevo Vacio\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\Usuario\Documents\Repos\SR Almeja\Graficas-avanzadas\Nuevo Vacio\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\Usuario\Documents\Repos\SR Almeja\Graficas-avanzadas\Nuevo Vacio\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\Users\Verde5\Documents\Repos\SR ALMEJA\Graficas-avanzadas\Nuevo Vacio\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\Verde5\Documents\Repos\SR ALMEJA\Graficas-avanzadas\Nuevo Vacio\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\Usuario\Documents\Repos\SR Almeja\Graficas-avanzadas\Nuevo Vacio\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\Usuario\Documents\Repos\SR Almeja\Graficas-avanzadas\Nuevo Vacio\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
