@@ -75,8 +75,8 @@
     <LibraryPath>C:\Users\Verde5\Documents\Repos\SR ALMEJA\Graficas-avanzadas\EL Vacio\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>F:\Repositorios\Amerike\6to\Graficas-avanzadas\EL Vacio\include;$(IncludePath)</IncludePath>
-    <LibraryPath>F:\Repositorios\Amerike\6to\Graficas-avanzadas\EL Vacio\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\Verde6\Documents\Repos\Repos Almeja\Graficas-avanzadas\EL Vacio\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\Verde6\Documents\Repos\Repos Almeja\Graficas-avanzadas\EL Vacio\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -141,12 +141,15 @@
     <ClCompile Include="EBO.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="shaderClass.cpp" />
+    <ClCompile Include="stb.cpp" />
+    <ClCompile Include="Texture.cpp" />
     <ClCompile Include="VAO.cpp" />
     <ClCompile Include="VBO.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EBO.h" />
     <ClInclude Include="ShaderClass.h" />
+    <ClInclude Include="Texture.h" />
     <ClInclude Include="VAO.h" />
     <ClInclude Include="VBO.h" />
   </ItemGroup>
@@ -155,6 +158,9 @@
     <None Include="D1.frag" />
     <None Include="D2.frag" />
     <None Include="D2.vert" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\..\..\..\..\Downloads\Chopper.jpg" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

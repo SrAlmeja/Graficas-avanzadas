@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\EL Vacio",
+    "\\EL Vacio\\EL Vacio"
   ],
-  "SelectedNode": "\\EL Vacio.sln",
+  "SelectedNode": "\\EL Vacio\\EL Vacio\\Main.cpp",
   "PreviewInSolutionExplorer": false
 }

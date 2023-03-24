@@ -7,6 +7,8 @@
 #include"VBO.h"
 #include"EBO.h"
 
+#include<stb/stb_image.h>
+
 //Se Define la version, se asignan las posiciones del atributo
 
 
@@ -28,24 +30,52 @@ int main()
     float sizePercent = 0.2f;
     float NormalScale = 1.0f;
 
+    int widthTx, heightTx, numCol; //Guardar colores y medidas
+
+    GLuint texture;
+
+
     glfwSetTime(0);
 
-    GLfloat vertices[] =
+    GLfloat squareVertices[] =
     {
-        0.5f, -0.5f * float(sqrt(3)) / 3 , 0.0f,        0.5f, 0.0f, 0.5f, //esquina inferior izquierda
-        -0.5f, -0.5f * float(sqrt(3)) / 3 , 0.0f,       0.5f, 0.0f, 0.5f, //esquina inferior derecha
-        0.0f, 0.5f * float(sqrt(3)) * 2 / 3 , 0.0f,     1.0f, 0.0f, 0.0f, //punta de la trifuerza
-        0.5f / 2, 0.5f * float(sqrt(3)) / 6 , 0.0f,     0.0f, 0.0f, 0.0f, //esquina superior izquierda
-        -0.5f / 2, 0.5f * float(sqrt(3)) / 6 , 0.0f,    0.0f, 0.0f, 0.0f, //esquina superior derecha
-        0.0f, -0.5f * float(sqrt(3)) / 3 , 0.0f,        1.0f, 0.0f, 1.0f, //Base
+     -0.5f, -0.5f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f,
+     -0.5f, 0.5f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f,
+     0.5f, 0.5f, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f,
+     0.5f, -0.5f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f
     };
 
-    GLuint indices[] =
+    GLuint squareIndices[] =
     {
-    0, 3, 5, // Triangulo inferior izq
-    3, 2, 4, // Triangulo inferior der
-    5, 4, 1, // Triangulo superior
+     0, 2, 1,
+     0, 3, 2
     };
+
+    //Se Convierte el objeto en textura
+    glGenTextures(1, &texture);
+
+
+    //Leer Textura
+    unsigned char* bytes = stbi_load("chopper.png", &widthTx, &heightTx, &numCol, 0);
+
+    //Se hace la unlit Texture
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, texture);
+
+    //Configuracion de textura
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+
+    //Generador de textura
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, widthTx, heightTx, 0, GL_RGBA, GL_UNSIGNED_BYTE, bytes);
+
+    glGenerateMipmap(GL_TEXTURE_2D);
+
+    stbi_image_free(bytes);
+    glBindTexture(GL_TEXTURE_2D, 0);
 
 
 
@@ -55,24 +85,36 @@ int main()
     gladLoadGL();  //Carga las funciones en la libreria de glad
 
     //Se Crean los Shaders
-    Shader shaderProgram("D1.vert", "D1.frag");
+    // Shader shaderProgram("D1.vert", "D1.frag");
     Shader InsideShaderProgram("D2.vert", "D2.frag");
+
+    glBindTexture(GL_TEXTURE_2D, texture);
+
+    stbi_set_flip_vertically_on_load(true);
+
 
     VAO VAO1;
     VAO1.Bind();
 
-    VBO VBO1(vertices, sizeof(vertices));
-    EBO EBO1(indices, sizeof(indices));
+    VBO VBO1(squareVertices, sizeof(squareVertices));
+    EBO EBO1(squareIndices, sizeof(squareIndices));
 
     VAO1.LinkAttrib(VBO1, 0, 3, GL_FLOAT, 6 * sizeof(float), (void*)0);
     VAO1.LinkAttrib(VBO1, 1, 3, GL_FLOAT, 6 * sizeof(float), (void*)(3 * sizeof(float)));
+    VAO1.LinkAttrib(VBO1, 2, 2, GL_FLOAT, 8 * sizeof(float), (void*)(6 * sizeof(float)));
 
     VAO1.Unbind();
     VBO1.Unbind();
     EBO1.Unbind();
 
-    GLuint uniID = glGetUniformLocation(shaderProgram.ID, "scale");
+    GLuint tex0uni = glGetUniformLocation(InsideShaderProgram.ID, "tex0");
+
+
+    // GLuint uniID = glGetUniformLocation(shaderProgram.ID, "scale");
     GLuint insideID = glGetUniformLocation(InsideShaderProgram.ID, "scale");
+
+    texture luffy("Chopper.jpg", GL_TEXTURE_2D, GL_TEXTURE0, GL_RGBA, GL_UNSIGNED_BYTE);
+    luffy.texUnit(InsideShaderProgram, "tex0", 0);
 
 
     while (!glfwWindowShouldClose(window))
@@ -87,14 +129,15 @@ int main()
         scale = sin(time) * sizePercent + NormalScale;
 
         InsideShaderProgram.Activate();
+        glUniform1i(tex0uni, 0);
         glUniform1f(insideID, (scale/3.5f));
         VAO1.Bind();
         glDrawElements(GL_TRIANGLES, 9, GL_UNSIGNED_INT, 0);
 
         scale2 = sin(time2) * sizePercent + NormalScale;
         
-        shaderProgram.Activate();
-        glUniform1f(uniID, scale2);
+        // shaderProgram.Activate();
+        // glUniform1f(uniID, scale2);
         glDrawElements(GL_TRIANGLES, 9, GL_UNSIGNED_INT, 0);
 
         std::cout << scale << std::endl;
@@ -108,11 +151,11 @@ int main()
     VBO1.Delete();
     EBO1.Delete();
 
-    shaderProgram.Delete();
+    // shaderProgram.Delete();
     InsideShaderProgram.Delete();
 
 
-    glViewport(0, 0, 1000, 1000);
+    glViewport(0, 0, 1024, 1024);
     glfwSwapBuffers(window);
 
     glfwDestroyWindow(window);
