@@ -6,7 +6,7 @@
 #include"VAO.h"
 #include"VBO.h"
 #include"EBO.h"
-//#include"Texture.h"
+#include"Texture.h"
 
 #include<stb/stb_image.h>
 
@@ -104,7 +104,7 @@ int main()
     std::cout << numCol << std::endl;
 
     //Generador de textura
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, widthTx, heightTx, 0, GL_RGBA, GL_UNSIGNED_BYTE, bytes);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, widthTx, heightTx, 0, GL_RGB, GL_UNSIGNED_BYTE, bytes);
 
     glGenerateMipmap(GL_TEXTURE_2D);
     stbi_image_free(bytes);
@@ -132,8 +132,8 @@ int main()
     InsideShaderProgram.Activate();
     glUniform1i(tex0uni, 0);
 
-    /*Texture luffy("Chopper.jpg", GL_TEXTURE_2D, GL_TEXTURE0, GL_RGBA, GL_UNSIGNED_BYTE);
-    luffy.texUnit(InsideShaderProgram, "tex0", 0);*/
+    Texture luffy("Chopper.jpg", GL_TEXTURE_2D, GL_TEXTURE0, GL_RGB, GL_UNSIGNED_BYTE);
+    luffy.texUnit(InsideShaderProgram, "tex0", 0);
 
 
     while (!glfwWindowShouldClose(window))
