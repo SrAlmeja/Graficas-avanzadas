@@ -78,7 +78,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\..\..\..\..\..\Downloads\Chopper.jpg">
+    <Image Include="chopper.jpg">
       <Filter>Archivos de recursos\Textures</Filter>
     </Image>
   </ItemGroup>

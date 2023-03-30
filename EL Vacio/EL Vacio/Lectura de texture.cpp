@@ -118,7 +118,7 @@ int main()
         VAO1.Bind();
 
         //scale2 = sin(time2) * sizePercent + NormalScale;
-        
+
         // shaderProgram.Activate();
         // glUniform1f(uniID, scale2);
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);

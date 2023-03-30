@@ -12,4 +12,5 @@ void main()
  aPos.y + aPos.y * scale * 1.5f,
  aPos.z + aPos.z * scale * 1.5f, 1.0);
  color = aColor;
+ texCoord = aTex;
 }
