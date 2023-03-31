@@ -7,10 +7,7 @@ out vec3 color;
 uniform float scale;
 void main()
 {
- gl_Position = vec4(
- aPos.x + aPos.x * scale * 1.5f,
- aPos.y + aPos.y * scale * 1.5f,
- aPos.z + aPos.z * scale * 1.5f, 1.0);
+ gl_Position = vec4 (aPos, 1.0f);
  color = aColor;
  texCoord = aTex;
 }

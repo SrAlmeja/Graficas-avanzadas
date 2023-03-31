@@ -27,9 +27,11 @@ int main()
 
 
     double seconds = 1.0f;
+    /*float scale, scale2;
+    float sizePercent = 0.2f;
+    float NormalScale = 1.0f;*/
 
     //Variables para textura
-
     int widthTx, heightTx, numCol; //Guardar colores y medidas
 
 
@@ -37,10 +39,10 @@ int main()
 
     GLfloat squareVertices[] =
     {
-     -0.5f, -0.5f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f,
-     -0.5f, 0.5f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f,
-     0.5f, 0.5f, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f,
-     0.5f, -0.5f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f
+     -0.5f, -0.5f, 0.0f,     1.0f, 0.0f, 0.0f, 0.0f, 0.0f,
+     -0.5f, 0.5f, 0.0f,  0.0f, 1.0f, 0.0f, 0.0f, 1.0f,
+        0.5f, 0.5f, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f,
+        0.5f, -0.5f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f
     };
 
     GLuint squareIndices[] =
@@ -67,8 +69,7 @@ int main()
 
     //Se Crean los Shaders
     // Shader shaderProgram("D1.vert", "D1.frag");
-    Shader InsideShaderProgram("D2.vert", "D2.frag");
-    Shader ChangeColorShaderProgram("CC.vert", "CC.frag");
+    Shader InsideShaderProgram("CC.vert", "CC.frag");
 
 
 
@@ -89,20 +90,14 @@ int main()
 
     // GLuint uniID = glGetUniformLocation(shaderProgram.ID, "scale");
     GLuint insideID = glGetUniformLocation(InsideShaderProgram.ID, "scale");
-    GLuint CCID = glGetUniformLocation(ChangeColorShaderProgram.ID, "scale");
 
+    GLuint tex0uni = glGetUniformLocation(InsideShaderProgram.ID, "tex0");
 
-    GLuint inTex0uni = glGetUniformLocation(InsideShaderProgram.ID, "tex0");
-    GLuint cCTex0uni = glGetUniformLocation(ChangeColorShaderProgram.ID, "tex0");
+    GLuint randomColor = glGetUniformLocation(InsideShaderProgram.ID, "randomColor");
 
     InsideShaderProgram.Activate();
-    ChangeColorShaderProgram.Activate();
 
-    glUniform1i(inTex0uni, 0);
-    glUniform1i(cCTex0uni, 0);
-
-    luffy.texUnit(InsideShaderProgram, "tex0", 0);
-    luffy.texUnit(ChangeColorShaderProgram, "tex0", 0);
+    luffy.texUnit(InsideShaderProgram, "randomColor", 0);
 
 
     while (!glfwWindowShouldClose(window))
@@ -117,13 +112,15 @@ int main()
 
         //scale = sin(time) * sizePercent + NormalScale;
 
+        InsideShaderProgram.Activate();
+
         luffy.Bind();
-        glUniform1i(inTex0uni, 0);
-        glUniform1i(cCTex0uni, 0);
+        glUniform1i(tex0uni, 0);
+        glUniform4f(randomColor, 1.0f, 0.0f, 0.0f, 1.0f);
         VAO1.Bind();
 
         //scale2 = sin(time2) * sizePercent + NormalScale;
-        
+
         // shaderProgram.Activate();
         // glUniform1f(uniID, scale2);
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
@@ -141,7 +138,6 @@ int main()
 
     // shaderProgram.Delete();
     InsideShaderProgram.Delete();
-    ChangeColorShaderProgram.Delete();
 
 
     glViewport(0, 0, 1024, 1024);
