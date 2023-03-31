@@ -139,6 +139,7 @@
   <ItemGroup>
     <ClCompile Include="..\..\glad.c" />
     <ClCompile Include="EBO.cpp" />
+    <ClCompile Include="lecText.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="shaderClass.cpp" />
     <ClCompile Include="stb.cpp" />
@@ -154,8 +155,8 @@
     <ClInclude Include="VBO.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="D1.vert" />
-    <None Include="D1.frag" />
+    <None Include="CC.frag" />
+    <None Include="CC.vert" />
     <None Include="D2.frag" />
     <None Include="D2.vert" />
   </ItemGroup>

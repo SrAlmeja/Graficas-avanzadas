@@ -13,7 +13,7 @@
 //Se Define la version, se asignan las posiciones del atributo
 
 
-int main()
+int lecText()
 {
     glfwInit();
 

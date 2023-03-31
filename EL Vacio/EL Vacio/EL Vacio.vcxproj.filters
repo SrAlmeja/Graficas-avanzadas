@@ -45,6 +45,9 @@
     <ClCompile Include="Texture.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+    <ClCompile Include="lecText.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="VAO.h">
@@ -64,16 +67,16 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="D1.vert">
-      <Filter>Archivos de recursos\Shaders</Filter>
-    </None>
-    <None Include="D1.frag">
-      <Filter>Archivos de recursos\Shaders</Filter>
-    </None>
     <None Include="D2.vert">
       <Filter>Archivos de recursos\Shaders</Filter>
     </None>
     <None Include="D2.frag">
+      <Filter>Archivos de recursos\Shaders</Filter>
+    </None>
+    <None Include="CC.frag">
+      <Filter>Archivos de recursos\Shaders</Filter>
+    </None>
+    <None Include="CC.vert">
       <Filter>Archivos de recursos\Shaders</Filter>
     </None>
   </ItemGroup>
