@@ -10,39 +10,32 @@
 
 #include<stb/stb_image.h>
 
-//Se Define la version, se asignan las posiciones del atributo
-
 
 int main()
 {
     glfwInit();
 
-    //Se dice la versión a usar de Open GL
+    float tValue = glfwGetTime();
+    float red = 1.0f;
+    float green = 1.0f;
+    float blue = 1.0f;
+
+
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-    //Apuntador de tipo window para tener referencia de la ventana (Referencia)
+
     GLFWwindow* window = glfwCreateWindow(1000, 1000, "Window", NULL, NULL);
-
-
-    double seconds = 1.0f;
-    /*float scale, scale2;
-    float sizePercent = 0.2f;
-    float NormalScale = 1.0f;*/
-
-    //Variables para textura
-    int widthTx, heightTx, numCol; //Guardar colores y medidas
-
 
     glfwSetTime(0);
 
     GLfloat squareVertices[] =
-    {
-     -0.5f, -0.5f, 0.0f,     1.0f, 0.0f, 0.0f, 0.0f, 0.0f,
-     -0.5f, 0.5f, 0.0f,  0.0f, 1.0f, 0.0f, 0.0f, 1.0f,
-        0.5f, 0.5f, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f,
-        0.5f, -0.5f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f
+    {//     Cordenadas      /       Color       /       TextCord    
+     -0.5f, -0.5f, 0.0f,       1.0f, 0.0f, 0.0f,        0.0f, 0.0f,
+     -0.5f, 0.5f, 0.0f,        0.0f, 1.0f, 0.0f,        0.0f, 1.0f,
+     0.5f, 0.5f, 0.0f,         0.0f, 0.0f, 1.0f,        1.0f, 1.0f,
+     0.5f, -0.5f, 0.0f,        1.0f, 1.0f, 1.0f,        1.0f, 0.0f
     };
 
     GLuint squareIndices[] =
@@ -51,27 +44,18 @@ int main()
      0, 3, 2
     };
 
-    //Se Convierte el objeto en textura
-    //glGenTextures(1, &texture);
-
     glfwMakeContextCurrent(window);
     gladLoadGL();
 
-    //Se crea la textura
-    Texture luffy("chopper.jpg", GL_TEXTURE_2D, GL_TEXTURE0, GL_RGB, GL_UNSIGNED_BYTE);
+    Texture luffy("Mario.jpg", GL_TEXTURE_2D, GL_TEXTURE0, GL_RGB, GL_UNSIGNED_BYTE);
 
-
-
-    //Crear un contexto para openGL
     glfwMakeContextCurrent(window);
-    //Agregando el color, Se definen los colores de la pantalla
-    gladLoadGL();  //Carga las funciones en la libreria de glad
 
-    //Se Crean los Shaders
+    gladLoadGL();
+
+ 
     // Shader shaderProgram("D1.vert", "D1.frag");
     Shader InsideShaderProgram("CC.vert", "CC.frag");
-
-
 
 
     VAO VAO1;
@@ -99,33 +83,32 @@ int main()
 
     luffy.texUnit(InsideShaderProgram, "randomColor", 0);
 
+    glUniform1i(tex0uni, 0);
+
 
     while (!glfwWindowShouldClose(window))
     {
-        /*GLfloat time = glfwGetTime() * (18.9f * seconds);
-        GLfloat time2 = glfwGetTime() * (20.0f*seconds);*/
-        GLfloat time = glfwGetTime() * seconds;
+        float tValue = glfwGetTime();
+        float red = cos(tValue*3) / sin(tValue+60);
+        float green = sin(tValue*9) / cos(tValue-30);
+        float blue = cos(tValue*6) / sin(tValue+30);
 
-        //Asignacion de buffer
+        glUniform1i(tex0uni, 0);
+        glUniform3f(randomColor, red, green, blue);
+
+
         glClearColor(0.01f, 0.05f, 0.15f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
-        //scale = sin(time) * sizePercent + NormalScale;
 
         InsideShaderProgram.Activate();
 
         luffy.Bind();
-        glUniform1i(tex0uni, 0);
-        glUniform4f(randomColor, 1.0f, 0.0f, 0.0f, 1.0f);
+       
         VAO1.Bind();
 
-        //scale2 = sin(time2) * sizePercent + NormalScale;
-
-        // shaderProgram.Activate();
-        // glUniform1f(uniID, scale2);
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
-        //std::cout << scale << std::endl;
 
         glfwSwapBuffers(window);
 

@@ -84,5 +84,8 @@
     <Image Include="chopper.jpg">
       <Filter>Archivos de recursos\Textures</Filter>
     </Image>
+    <Image Include="Mario.jpg">
+      <Filter>Archivos de recursos\Textures</Filter>
+    </Image>
   </ItemGroup>
 </Project>
