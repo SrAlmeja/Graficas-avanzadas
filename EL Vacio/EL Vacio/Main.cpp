@@ -89,9 +89,9 @@ int main()
     while (!glfwWindowShouldClose(window))
     {
         float tValue = glfwGetTime();
-        float red = cos(tValue*3) / sin(tValue+60);
-        float green = sin(tValue*9) / cos(tValue-30);
-        float blue = cos(tValue*6) / sin(tValue+30);
+        float red = 1;
+        float green = 1;
+        float blue = 1;
 
         glUniform1i(tex0uni, 0);
         glUniform3f(randomColor, red, green, blue);
