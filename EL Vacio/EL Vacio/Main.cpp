@@ -15,12 +15,6 @@ int main()
 {
     glfwInit();
 
-    float tValue = glfwGetTime();
-    float red = 1.0f;
-    float green = 1.0f;
-    float blue = 1.0f;
-
-
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
@@ -32,10 +26,10 @@ int main()
 
     GLfloat squareVertices[] =
     {//     Cordenadas      /       Color       /       TextCord    
-     -0.5f, -0.5f, 0.0f,       1.0f, 0.0f, 0.0f,        0.0f, 0.0f,
-     -0.5f, 0.5f, 0.0f,        0.0f, 1.0f, 0.0f,        0.0f, 1.0f,
-     0.5f, 0.5f, 0.0f,         0.0f, 0.0f, 1.0f,        1.0f, 1.0f,
-     0.5f, -0.5f, 0.0f,        1.0f, 1.0f, 1.0f,        1.0f, 0.0f
+     -0.4f, 0.01f, 0.0f,       1.0f, 0.0f, 0.0f,        0.0f, 0.0f,     // Esquina inferior izquierda
+     -0.4f, 0.8f, 0.0f,        0.0f, 1.0f, 0.0f,        0.0f, 1.0f,     // Esquina superior Izquierda
+     0.4f, 0.8f, 0.0f,         0.0f, 0.0f, 1.0f,        1.0f, 1.0f,     // Esquina Superior Derecha
+     0.4f, 0.0f, 0.0f,        1.0f, 1.0f, 1.0f,        1.0f, 0.0f       // Esquina Superior Derecha
     };
 
     GLuint squareIndices[] =

@@ -160,6 +160,8 @@
     <None Include="CC.vert" />
     <None Include="D2.frag" />
     <None Include="D2.vert" />
+    <None Include="RE.frag" />
+    <None Include="RE.vert" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="chopper.jpg" />
