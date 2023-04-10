@@ -15,6 +15,12 @@ int main()
 {
     glfwInit();
 
+    float tValue = glfwGetTime();
+    float red = 1.0f;
+    float green = 1.0f;
+    float blue = 1.0f;
+
+
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
@@ -26,10 +32,18 @@ int main()
 
     GLfloat squareVertices[] =
     {//     Cordenadas      /       Color       /       TextCord    
-     -0.4f, 0.01f, 0.0f,       1.0f, 0.0f, 0.0f,        0.0f, 0.0f,     // Esquina inferior izquierda
-     -0.4f, 0.8f, 0.0f,        0.0f, 1.0f, 0.0f,        0.0f, 1.0f,     // Esquina superior Izquierda
-     0.4f, 0.8f, 0.0f,         0.0f, 0.0f, 1.0f,        1.0f, 1.0f,     // Esquina Superior Derecha
-     0.4f, 0.0f, 0.0f,        1.0f, 1.0f, 1.0f,        1.0f, 0.0f       // Esquina Superior Derecha
+     -0.5f, 0.0f, 0.0f,       1.0f, 0.0f, 0.0f,        0.0f, 0.0f,      // Esquina Inferior Izquierda
+     -0.5f, 1.0f, 0.0f,       0.0f, 1.0f, 0.0f,        0.0f, 1.0f,      // Esquina Superior Izquierda
+     0.5f, 1.0f, 0.0f,        0.0f, 0.0f, 1.0f,        1.0f, 1.0f,      // Esquina Superior Derecha
+     0.5f, 0.0f, 0.0f,        1.0f, 1.0f, 1.0f,        1.0f, 0.0f       // Esquina Inferior Derecha
+    };
+
+    GLfloat squareVerticesMirror[] =
+    {//     Cordenadas      /       Color       /       TextCord    
+     -0.5f, -0.10f, 0.0f,       1.0f, 0.0f, 0.0f,        0.0f, 0.0f,    // Esquina Inferior Izquierda
+     -0.5f, 0.5f, 0.0f,         0.0f, 1.0f, 0.0f,        0.0f, 1.0f,    // Esquina Superior Izquierda
+     0.5f, 0.5f, 0.0f,          0.0f, 0.0f, 1.0f,        1.0f, 1.0f,    // Esquina Superior Derecha
+     0.5f, -0.10f, 0.0f,        1.0f, 1.0f, 1.0f,        1.0f, 0.0f     // Esquina Inferior Derecha
     };
 
     GLuint squareIndices[] =
@@ -41,15 +55,15 @@ int main()
     glfwMakeContextCurrent(window);
     gladLoadGL();
 
-    Texture luffy("Mario.jpg", GL_TEXTURE_2D, GL_TEXTURE0, GL_RGB, GL_UNSIGNED_BYTE);
+    Texture mario("Mario.jpg", GL_TEXTURE_2D, GL_TEXTURE0, GL_RGB, GL_UNSIGNED_BYTE);
 
     glfwMakeContextCurrent(window);
 
     gladLoadGL();
 
- 
+
     // Shader shaderProgram("D1.vert", "D1.frag");
-    Shader InsideShaderProgram("CC.vert", "CC.frag");
+    Shader InsideShaderProgram("RE.vert", "RE.frag");
 
 
     VAO VAO1;
@@ -66,6 +80,20 @@ int main()
     VBO1.Unbind();
     EBO1.Unbind();
 
+    VAO VAO2;
+    VAO2.Bind();
+
+    VBO VBO2(squareVerticesMirror, sizeof(squareVerticesMirror));
+    EBO EBO2(squareIndices, sizeof(squareIndices));
+
+    VAO2.LinkAttrib(VBO1, 0, 3, GL_FLOAT, 8 * sizeof(float), (void*)0);
+    VAO2.LinkAttrib(VBO1, 1, 3, GL_FLOAT, 8 * sizeof(float), (void*)(3 * sizeof(float)));
+    VAO2.LinkAttrib(VBO1, 2, 2, GL_FLOAT, 8 * sizeof(float), (void*)(6 * sizeof(float)));
+
+    VAO2.Unbind();
+    VBO2.Unbind();
+    EBO2.Unbind();
+
     // GLuint uniID = glGetUniformLocation(shaderProgram.ID, "scale");
     GLuint insideID = glGetUniformLocation(InsideShaderProgram.ID, "scale");
 
@@ -75,8 +103,7 @@ int main()
 
     InsideShaderProgram.Activate();
 
-    luffy.texUnit(InsideShaderProgram, "randomColor", 0);
-
+    mario.texUnit(InsideShaderProgram, "randomColor", 0);
     glUniform1i(tex0uni, 0);
 
 
@@ -97,9 +124,10 @@ int main()
 
         InsideShaderProgram.Activate();
 
-        luffy.Bind();
-       
+        mario.Bind();
+
         VAO1.Bind();
+        VAO2.Bind();
 
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
@@ -112,6 +140,10 @@ int main()
     VAO1.Delete();
     VBO1.Delete();
     EBO1.Delete();
+
+    VAO2.Delete();
+    VBO2.Delete();
+    EBO2.Delete();
 
     // shaderProgram.Delete();
     InsideShaderProgram.Delete();

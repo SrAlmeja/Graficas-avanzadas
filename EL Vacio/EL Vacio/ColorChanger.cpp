@@ -47,7 +47,7 @@ int ColorChanger()
     glfwMakeContextCurrent(window);
     gladLoadGL();
 
-    Texture luffy("Mario.jpg", GL_TEXTURE_2D, GL_TEXTURE0, GL_RGB, GL_UNSIGNED_BYTE);
+    Texture mario("Mario.jpg", GL_TEXTURE_2D, GL_TEXTURE0, GL_RGB, GL_UNSIGNED_BYTE);
 
     glfwMakeContextCurrent(window);
 
@@ -81,8 +81,7 @@ int ColorChanger()
 
     InsideShaderProgram.Activate();
 
-    luffy.texUnit(InsideShaderProgram, "randomColor", 0);
-
+    mario.texUnit(InsideShaderProgram, "randomColor", 0);
     glUniform1i(tex0uni, 0);
 
 
@@ -103,7 +102,7 @@ int ColorChanger()
 
         InsideShaderProgram.Activate();
 
-        luffy.Bind();
+        mario.Bind();
 
         VAO1.Bind();
 

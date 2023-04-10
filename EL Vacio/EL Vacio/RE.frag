@@ -1,13 +1,31 @@
 #version 330 core
-out vec4 FragColor;
+
 in vec2 texCoord;
-uniform sampler2D tex0
-uniform float mirrorAxis;
+in vec3 Normal;
+in Vec3 FragPos;
+
+out vec3 FragPos;
+
+uniform vec3 lightpos;
+uniform vec3 lightColor
+uniform float specularStrenght;
+
+uniform sampler2D diffuseMap;
+uniform sampler2D specularMap;
+
 void main()
 {
- vec2 mirroredTexCord = vec2(texCoord.x * (1.0 - mirrorAxis) + (1.0 - texCoord.x) * mirrorAxis, texCord.y * (1.0 - texCoord.y) * mirrorAxis)
+ vec3 viewDir = normalize(-FragPos);
+ vec3 lightDir = normilize(lightpose - Fragpos);
+ vec3 halfwayDir = normilize(viewDir + lightdir);
 
- vec4 textureColor = texture(tex0, modifiedTexCoord);
+ vec3 diffuse = texture(diffuseMap, texCoord).rgb;
+ vec3 specular = texture(specularMap, TexCoord).rgb;
 
- FragColor = textureColor;
+ float intensity = max(dat(Normal, halfwayDir), 0.0);
+ float shiness = 32.0;
+ vec3 specilarColor = lightColor * pow(intensity, shiness) * specular * specularStreigth;
+
+vec3 result = difsuse + ´pecularColor;
+Fragcolor = vec4(result, 1.0);
 }

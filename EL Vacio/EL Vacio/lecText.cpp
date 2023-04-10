@@ -39,10 +39,10 @@ int lecText()
 
     GLfloat squareVertices[] =
     {
-     -0.5f, -0.5f, 0.0f,     1.0f, 0.0f, 0.0f, 0.0f, 0.0f,
-     -0.5f, 0.5f, 0.0f,  0.0f, 1.0f, 0.0f, 0.0f, 1.0f,
-        0.5f, 0.5f, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f,
-        0.5f, -0.5f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f
+     -0.5f, -0.5f, 0.0f,    1.0f, 0.0f, 0.0f,       0.0f, 0.0f,
+     -0.5f, 0.5f, 0.0f,     0.0f, 1.0f, 0.0f,       0.0f, 1.0f,
+     0.5f, 0.5f, 0.0f,      0.0f, 0.0f, 1.0f,       1.0f, 1.0f,
+     0.5f, -0.5f, 0.0f,     1.0f, 1.0f, 1.0f,       1.0f, 0.0f
     };
 
     GLuint squareIndices[] =
@@ -70,7 +70,6 @@ int lecText()
     //Se Crean los Shaders
     // Shader shaderProgram("D1.vert", "D1.frag");
     Shader InsideShaderProgram("D2.vert", "D2.frag");
-
 
 
 
