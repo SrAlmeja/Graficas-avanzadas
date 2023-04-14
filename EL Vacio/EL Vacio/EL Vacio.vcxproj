@@ -75,8 +75,8 @@
     <LibraryPath>C:\Users\Verde5\Documents\Repos\SR ALMEJA\Graficas-avanzadas\EL Vacio\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>F:\Repositorios\Amerike\6to\Graficas-avanzadas\EL Vacio\include;$(IncludePath)</IncludePath>
-    <LibraryPath>F:\Repositorios\Amerike\6to\Graficas-avanzadas\EL Vacio\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\Verde6\Documents\Repos\Repos Almeja\Graficas-avanzadas\EL Vacio\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\Verde6\Documents\Repos\Repos Almeja\Graficas-avanzadas\EL Vacio\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -165,6 +165,7 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="chopper.jpg" />
+    <Image Include="Litch.jpg" />
     <Image Include="Mario.jpg" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
