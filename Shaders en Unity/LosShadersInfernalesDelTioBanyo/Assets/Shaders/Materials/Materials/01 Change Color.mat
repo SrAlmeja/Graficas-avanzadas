@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 01 Change Color
-  m_Shader: {fileID: 4800000, guid: ea21622c8ac82c84985ac4d120033646, type: 3}
+  m_Shader: {fileID: 4800000, guid: 4ed6d6945120c164eaf1a4647f20ab60, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -41,7 +41,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 8ac3b67f720312347a0e4e77cafd1629, type: 3}
+        m_Texture: {fileID: 2800000, guid: d6b15e72d831b8846b5966bd5ba94bf3, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
