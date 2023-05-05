@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 05 TextureMovement
-  m_Shader: {fileID: 4800000, guid: 036aff60c8fa02b4c9cb80d5809abecc, type: 3}
+  m_Shader: {fileID: 4800000, guid: f477f6b97ca4fc74b81ed8f347012e2d, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -41,7 +41,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 2403b7f6e255ce84e9b929ff8d79d650, type: 3}
+        m_Texture: {fileID: 2800000, guid: 55da84ee137971044a741ca71ba245fb, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
