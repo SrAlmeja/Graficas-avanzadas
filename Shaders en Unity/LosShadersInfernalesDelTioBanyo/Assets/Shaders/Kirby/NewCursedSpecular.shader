@@ -1,14 +1,13 @@
-Shader "Custom/CursedSpecular"
+Shader "Custom/NewCursedSpecular"
 {
     Properties
     {
+        _MainTex ("Albedo", 2D) = "white" {}
+        _Normal ("Normal", 2D) = "White" {}
         _Color ("Color", Color) = (1,1,1,1)
-        _MainTex ("Albedo (RGB)", 2D) = "white" {}
-        _SpecularTex ("Specular Texture", 2D) = "white" {}
-        _NormalFactor ("Specular Factor", Range(0.0, 1.0)) = 0.5 
+        _Specular ("Specular", Range(0.0,1.1)) = 0.3
         _Glossiness ("Smoothness", Range(0,1)) = 0.5
         _Metallic ("Metallic", Range(0,1)) = 0.0
-        _Emission ("Emission", Range(0,100)) = 0.0
     }
     SubShader
     {
@@ -17,28 +16,23 @@ Shader "Custom/CursedSpecular"
 
         CGPROGRAM
         // Physically based Standard lighting model, and enable shadows on all light types
-        #pragma surface surf Standard vertex:vert
+        #pragma surface surf Standard fullforwardshadows
 
         // Use shader model 3.0 target, to get nicer looking lighting
         #pragma target 3.0
 
         sampler2D _MainTex;
-        sampler2D _NormalTex;
+        sampler2D _Normal;
 
         struct Input
         {
             float2 uv_MainTex;
-            float2 uv_NormalTex;
-            float3 worldNormal;
-            float3 worldTangent;
-            flat3 worldBinormal;
-            float3 viewDir,
         };
-
+        
+        half _specular;
         half _Glossiness;
         half _Metallic;
         fixed4 _Color;
-        
 
         // Add instancing support for this shader. You need to check 'Enable Instancing' on materials that use the shader.
         // See https://docs.unity3d.com/Manual/GPUInstancing.html for more information about instancing.
@@ -51,16 +45,10 @@ Shader "Custom/CursedSpecular"
         {
             // Albedo comes from a texture tinted by color
             fixed4 c = tex2D (_MainTex, IN.uv_MainTex) * _Color;
-            //Calcular la Dirección de la Luz a partir del mundo
-            float3 l = normilize( _LightPos - IN.worldPos);
             o.Albedo = c.rgb;
             // Metallic and smoothness come from slider variables
             o.Metallic = _Metallic;
             o.Smoothness = _Glossiness;
-            o.Normal = _Normal;
-            o.Emission = _SpecularFactor * spec * tex2D(_SpecularTex, In.uv.mainTex).rgb;
-            o.albedo = tex2D(_MainTex, In.uv_MainTex).rgb;
-            o.Specular = 0.5;
             o.Alpha = c.a;
         }
         ENDCG
