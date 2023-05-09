@@ -11,6 +11,12 @@ Shader "Unlit/USB_Simple_Color"
         _vPos ("Vertex Position", Vector) = (0,0,0,1)
         [Toggle] _TryMeToggle("TryMe", Float) = 0 //No hace nada
         [Toggle] _Enable ("Enable ?", Float) = 0
+        
+        [KeywordEnum(StateOff, Red, Blue)]
+        _Options ("Color Options", Float) = 0
+        
+        [Enum(Off, 0, Front, 1, Back, 2)]
+        _Face ("Face Culling", Float) = 0
     }
     SubShader
     {
@@ -18,6 +24,7 @@ Shader "Unlit/USB_Simple_Color"
         Tags { "RenderType"="Opaque" }
         LOD 100
 
+        Cull [_Face]
         Pass
         {
             CGPROGRAM
@@ -25,7 +32,7 @@ Shader "Unlit/USB_Simple_Color"
             #pragma vertex vert
             #pragma fragment frag
             #pragma shader_feature _ENABLE_ON
-            
+            #pragma multi_compile _OPTIONS_OFF _OPTIONS_RED _OPTIONS_BLUE
 
             #include "UnityCG.cginc"
 
@@ -45,11 +52,11 @@ Shader "Unlit/USB_Simple_Color"
 
             sampler2D _MainTex;
             float4 _MainTex_ST;
-            float4 _Color;
+            half4 _Color;
             half _Specular;
             float _Factor;
             int _Cid;
-            float4 _vPose;
+            float3 _vPose;
             
 
             v2f vert (appdata v)
@@ -60,15 +67,23 @@ Shader "Unlit/USB_Simple_Color"
                 return o;
             }
 
-            half4 frag (v2f i) : SV_Target
+            float4 frag (v2f i) : SV_Target
             {
-                half4 col = tex2D(_MainTex, i.uv);
+                float4 col = tex2D(_MainTex, i.uv);
 
                 //generamos la condición
                 #if _ENABLE_ON
                     return col;
                 #else
-                    return col.rgb *= _Color.rgb
+                col.rgb *= _Color.rgb;
+                    #if _OPTIONS_OFF
+                        return col;
+                    #elif _OPTIONS_RED
+                        return col * float4(1, 0, 0, 1);
+                    #elif _OPTIONS_BLUE
+                        return col * float4(0, 0, 1, 1);
+                    #endif
+                return col;
                 #endif
             }
             
