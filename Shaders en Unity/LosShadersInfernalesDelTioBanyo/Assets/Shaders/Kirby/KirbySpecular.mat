@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: KirbySpecular
-  m_Shader: {fileID: 4800000, guid: 2e76d9444ea96ac4588bb61caf6de7db, type: 3}
+  m_Shader: {fileID: 4800000, guid: 3369d761f5971a8408b0320a244ba423, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords:
   - _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
@@ -42,7 +42,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 20da8a2f1aa13c44d91503e1a8c186a9, type: 3}
+        m_Texture: {fileID: 2800000, guid: 6bd34f9b662620046b91c4d1b6f5da4a, type: 3}
         m_Scale: {x: -0.88, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -50,7 +50,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Normal:
-        m_Texture: {fileID: 2800000, guid: 9afc6a77e8d9afd4fb52d53e1aa9ad71, type: 3}
+        m_Texture: {fileID: 2800000, guid: b4ee8f60d692e1c4bb3dcbbcfad4f7d1, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalTex:

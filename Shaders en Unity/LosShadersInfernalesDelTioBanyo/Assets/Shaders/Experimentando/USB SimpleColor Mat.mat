@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: USB SimpleColor Mat
-  m_Shader: {fileID: 4800000, guid: 14e4b8bcc8f580e4bba25649dc71e248, type: 3}
+  m_Shader: {fileID: 4800000, guid: 41f8ebbe27198474c84522b0f49ff020, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords:
   - _OPTIONS_STATEOFF
@@ -42,7 +42,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 629a965d40ccbd64cb5ff8d48cf9b057, type: 3}
+        m_Texture: {fileID: 2800000, guid: ee7d57329477e6944a3da18f07765c14, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -76,7 +76,7 @@ Material:
     - _Options: 0
     - _Parallax: 0.02
     - _SmoothnessTextureChannel: 0
-    - _Specular: 0.3
+    - _Specular: 0.276
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _TryMeToggle: 0
