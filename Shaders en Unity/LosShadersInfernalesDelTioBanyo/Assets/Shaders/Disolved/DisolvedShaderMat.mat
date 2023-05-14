@@ -31,6 +31,6 @@ Material:
     m_Ints: []
     m_Floats:
     - _Thresshold: 1
-    - _threshController: 0.5
+    - _threshController: 0
     m_Colors: []
   m_BuildTextureStacks: []

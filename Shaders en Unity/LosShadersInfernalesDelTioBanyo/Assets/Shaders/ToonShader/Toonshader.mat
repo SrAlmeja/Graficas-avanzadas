@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ChangeTextureShader
-  m_Shader: {fileID: 4800000, guid: bcfa6f67099017743abf86f01db4f700, type: 3}
+  m_Name: Toonshader
+  m_Shader: {fileID: 4800000, guid: 44b94732da1273944a5419c08bb83359, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -20,27 +20,29 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _GradientTex:
+        m_Texture: {fileID: 2800000, guid: b74ae55bccf439d41b00b668f9a76071, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: b92145a4c8772ac478234d51b3fb92de, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _MainTex1:
-        m_Texture: {fileID: 2800000, guid: 7dc4f975bccf8884aa96322d37377ec7, type: 3}
+    - _Ramp:
+        m_Texture: {fileID: 2800000, guid: b74ae55bccf439d41b00b668f9a76071, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _MainTex2:
-        m_Texture: {fileID: 2800000, guid: 49d1afbadcca15f418abdeedcf5e3ac9, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MainTexs:
+    - _ShadowTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Blend: 0.5
-    - _SwitchTexture: 0
-    - _blendValue: 0
-    - _speed: 10
-    m_Colors: []
+    - _Glossiness: 0.5
+    - _Metallic: 0
+    - _OutlineWidth: 0.01
+    - _RampThreshold: 0.986
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
