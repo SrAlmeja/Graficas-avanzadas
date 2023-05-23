@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-2556704915440788100
+--- !u!114 &-8972794473028757650
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,12 +20,12 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Blur Horizontal
-  m_Shader: {fileID: -6465566751694194690, guid: 3b3ca2f30d976dd4f97255c618c96994,
+  m_Name: ParallaxMaterial
+  m_Shader: {fileID: -6465566751694194690, guid: 997d3e47e196cd84baafd846b95272ff,
     type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
-  m_LightmapFlags: 4
+  m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -34,8 +34,16 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 2800000, guid: bb1864d164bcbd5478fb451bfcec495e, type: 3}
+    - _Aledo:
+        m_Texture: {fileID: 2800000, guid: f6f9a9d7325857644b9b46172ed4791a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Hight:
+        m_Texture: {fileID: 2800000, guid: a79efba93947c92479cdc668240b0ae4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Normal:
+        m_Texture: {fileID: 2800000, guid: c40e039f52549754b8ef064578758c87, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -52,9 +60,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _KernelSize: 0
+    - _ParallaxHight: 0.66
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _textureWidth: 0.5
-    m_Colors: []
+    m_Colors:
+    - _Lightdirection: {r: 0, g: 0, b: 0, a: 0}
+    - _ViewDirection: {r: 1, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
